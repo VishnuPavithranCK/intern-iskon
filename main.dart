@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:folkeventapp_new/eventlist.dart';
 import 'package:folkeventapp_new/eventdetail.dart';
@@ -10,6 +9,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_analytics/firebase_analytics.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
+import 'package:folkeventapp_new/eventdetails2.dart';
+import 'package:folkeventapp_new/ed2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,6 +75,7 @@ class EventTwoPage1 extends StatelessWidget {
         bottom: _buildBottomBar(),
       ),
       body: _buildShopItem(context),
+
     );
   }
 }
@@ -101,13 +103,13 @@ PreferredSize _buildBottomBar() {
 
 Widget _buildShopItem(BuildContext context) {
   return StreamBuilder(
-    stream: Firestore.instance.collection("eventlists").snapshots(),
+    stream: Firestore.instance.collection("eventlists1").snapshots(),
     builder: (context, snapshot) {
       return ListView.builder(
         itemCount: snapshot.data.documents.length,
         itemBuilder: (context, index) {
-          DocumentSnapshot eventlists = snapshot.data.documents[index];
-          return   Card(
+          DocumentSnapshot eventlists1 = snapshot.data.documents[index];
+          return Card(
             child: new Container(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               margin: EdgeInsets.only(bottom: 20.0),
@@ -117,16 +119,18 @@ Widget _buildShopItem(BuildContext context) {
                   Expanded(
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (_) {
                             return EventDetail();
                           }));
                         },
                         child: new Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: NetworkImage(eventlists['img']),
+                                  image: NetworkImage(eventlists1['img1']),
                                   fit: BoxFit.cover),
-                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0)),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.grey,
@@ -136,14 +140,14 @@ Widget _buildShopItem(BuildContext context) {
                         ),
                       )),
                   Expanded(
-                    child: new  Container(
+                    child: new Container(
                       padding: EdgeInsets.all(20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           GestureDetector(
                             child: Text(
-                              eventlists['eventname'],
+                              eventlists1['eventname1'],
                               style: TextStyle(
                                   fontSize: 22.0, fontWeight: FontWeight.w700),
                             ),
@@ -151,14 +155,14 @@ Widget _buildShopItem(BuildContext context) {
                           SizedBox(
                             height: 10.0,
                           ),
-                          Text(eventlists['category'],
+                          Text(eventlists1['category1'],
                               style:
                               TextStyle(color: Colors.grey, fontSize: 18.0)),
 
                           SizedBox(
                             height: 20.0,
                           ),
-                          Text(eventlists['date'],
+                          Text(eventlists1['date1'],
                               style: TextStyle(
                                 color: Colors.red,
                                 fontSize: 30.0,
@@ -166,7 +170,7 @@ Widget _buildShopItem(BuildContext context) {
                           SizedBox(
                             height: 20.0,
                           ),
-                          Text(eventlists['venue'],
+                          Text(eventlists1['venue1'],
                               style: TextStyle(
                                   fontSize: 12.0,
                                   color: Colors.red,
@@ -195,14 +199,7 @@ Widget _buildShopItem(BuildContext context) {
       );
     },
   );
-  
 }
-
-
-
-
-
-
 
 
 

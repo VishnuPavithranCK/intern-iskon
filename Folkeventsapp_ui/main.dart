@@ -2,14 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:folkeventapp_new/eventlist.dart';
 import 'package:folkeventapp_new/eventdetail.dart';
-//import 'package:flutter_appfinal1/login.dart';
-//import 'package:folkeventapp_new/login2.dart';
-//import 'package:folkeventapp_new/login3.dart';
-//import 'package:folkeventapp_new/signup.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:firebase_analytics/firebase_analytics.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
 import 'package:folkeventapp_new/eventdetails2.dart';
 import 'package:folkeventapp_new/ed2.dart';
 import 'package:folkeventapp_new/datepicker2.dart';
@@ -205,6 +198,14 @@ Widget _buildShopItem(BuildContext context) {
     },
   );
 }
+
+
+
+
+
+
+
+
 
 
 
